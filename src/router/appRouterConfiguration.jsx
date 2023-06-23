@@ -1,6 +1,6 @@
 import { HeroesApp } from '../HeroesApp'
 import { LoginPage } from '../auth'
-import { DcPage, MarvelPage } from '../heroes'
+import { DcPage, HeroPage, MarvelPage, SearchPage } from '../heroes'
 
 export const appRouterConfiguration = [
   {
@@ -17,9 +17,17 @@ export const appRouterConfiguration = [
         element: <DcPage />,
       },
       {
-        path: '/*',
-        element: <LoginPage />,
+        path: '/search',
+        element: <SearchPage />,
+      },
+      {
+        path: '/hero/:id',
+        element: <HeroPage />,
       },
     ],
+  },
+  {
+    path: '/*',
+    element: <LoginPage />,
   },
 ]
