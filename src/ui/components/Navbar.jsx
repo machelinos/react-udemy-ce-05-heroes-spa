@@ -1,10 +1,16 @@
-import { useContext } from 'react'
-import { Link, NavLink, useNavigate } from 'react-router-dom'
+import { useContext, useEffect } from 'react'
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../auth/context/AuthContext'
 
 export const Navbar = () => {
   const navigate = useNavigate()
   const { authState, logout } = useContext(AuthContext)
+  const { pathname, search } = useLocation()
+
+  useEffect(() => {
+    const lastPage = pathname + search
+    localStorage.setItem('lastPage', lastPage)
+  }, [pathname, search])
 
   const handleLogout = () => {
     logout()
