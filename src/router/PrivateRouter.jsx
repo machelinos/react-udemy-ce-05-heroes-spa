@@ -10,5 +10,5 @@ export const PrivateRouter = ({ children }) => {
 }
 
 PrivateRouter.propTypes = {
-  children: PropTypes.object.isRequired,
+  children: PropTypes.object,
 }
