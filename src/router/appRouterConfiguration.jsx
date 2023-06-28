@@ -1,13 +1,23 @@
+import { Navigate } from 'react-router-dom'
 import { HeroesApp } from '../HeroesApp'
 import { LoginPage } from '../auth'
 import { DcPage, HeroPage, MarvelPage, SearchPage } from '../heroes'
+import { PrivateRouter, PublicRouter } from './'
 
 export const appRouterConfiguration = [
   {
     path: '/',
-    element: <HeroesApp />,
+    element: (
+      <PrivateRouter>
+        <HeroesApp />
+      </PrivateRouter>
+    ),
 
     children: [
+      {
+        path: '/',
+        element: <Navigate to="/marvel" />,
+      },
       {
         path: '/marvel',
         element: <MarvelPage />,
@@ -24,10 +34,18 @@ export const appRouterConfiguration = [
         path: '/hero/:id',
         element: <HeroPage />,
       },
+      {
+        path: '/*',
+        element: <MarvelPage />,
+      },
     ],
   },
   {
-    path: '/*',
-    element: <LoginPage />,
+    path: '/login',
+    element: (
+      <PublicRouter>
+        <LoginPage />
+      </PublicRouter>
+    ),
   },
 ]
