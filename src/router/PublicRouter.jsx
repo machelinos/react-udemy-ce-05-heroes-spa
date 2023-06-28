@@ -9,5 +9,5 @@ export const PublicRouter = ({ children }) => {
 }
 
 PublicRouter.propTypes = {
-  children: PropTypes.object.isRequired,
+  children: PropTypes.object,
 }
