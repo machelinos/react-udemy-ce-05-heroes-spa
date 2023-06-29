@@ -29,7 +29,7 @@ export const SearchPage = () => {
 
       <div className="row">
         <div className="col-5">
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} aria-label="form">
             <input
               className="form-control"
               type="text"
